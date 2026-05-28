@@ -2,7 +2,7 @@ name: Run Shell Commands
 on: [push]
 jobs:
   run-shell-command:
-    runs-on: ununtu-latest
+    runs-on: ubuntu-latest
     steps:
      - name: Echo a string
        run: echo "Hello security, first action workflow"
