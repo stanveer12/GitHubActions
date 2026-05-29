@@ -1,0 +1,22 @@
+name: Security Scan
+on: [push, pull_request]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: anubissbe/auto-zap@v1
+      - name: Run security scan
+        id: scan
+        uses: anubissbe/auto-zap@v1
+        with:
+         url: 'https://pentest-ground.com:4280/'
+         full-scan: true
+         working-directory: './apps/web'
+
+      - name: Check results
+        run: |
+         echo "High: ${{ steps.scan.outputs.high-count }}"
+         echo "Medium: ${{ steps.scan.outputs.medium-count }}"
+         echo "Report: ${{ steps.scan.outputs.report-path }}"
