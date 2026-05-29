@@ -13,8 +13,7 @@ jobs:
         with:
          url: 'https://pentest-ground.com:4280/'
          full-scan: true
-         working-directory: './apps/web'
-
+         
       - name: Check results
         run: |
          echo "High: ${{ steps.scan.outputs.high-count }}"
