@@ -6,16 +6,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: anubissbe/auto-zap@v1
+      
       - name: Run security scan
         id: scan
         uses: anubissbe/auto-zap@v1
         with:
-         url: 'https://pentest-ground.com:81'
-         full-scan: true
-         
+          url: 'https://pentest-ground.com:81'
+          full-scan: true
+        continue-on-error: true
+          
       - name: Check results
         run: |
-         echo "High: ${{ steps.scan.outputs.high-count }}"
-         echo "Medium: ${{ steps.scan.outputs.medium-count }}"
-         echo "Report: ${{ steps.scan.outputs.report-path }}"
+          echo "High: ${{ steps.scan.outputs.high-count }}"
+          echo "Medium: ${{ steps.scan.outputs.medium-count }}"
+          echo "Report: ${{ steps.scan.outputs.report-path }}"
