@@ -11,7 +11,7 @@ jobs:
         id: scan
         uses: anubissbe/auto-zap@v1
         with:
-         url: 'https://pentest-ground.com:4280/'
+         url: 'https://pentest-ground.com:81'
          full-scan: true
          
       - name: Check results
